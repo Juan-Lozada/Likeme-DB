@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', indexComponent)
+app.use('/', indexComponent)
 
 
 app.listen(PORT, console.log(`SERVIDOR ENCENDIDO PUERTO: ${PORT}`))
