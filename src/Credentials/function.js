@@ -23,12 +23,16 @@ const post = async (titulo, img, descripcion) => {
     }
 }
 
-const like = async (id) => {
-    const cosulta = 'UPDATE posts SET likes = likes + 1  WHERE id = $1;'
-    const value = [id];
-    await pool.query(consulta, value);
-}
+const like = async id => {
+    try {
+        const consulta  = 'UPDATE posts SET likes = likes + 1  WHERE id = $1;'
+        const value = [id]
+        await pool.query(consulta , value)
 
+    } catch (e) {
+        console.log(e)
+    }
+}
 const deletePost = async (id) => {
     const consulta = 'DELETE FROM posts WHERE id = $1';
     const value = [id];

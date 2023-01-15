@@ -33,13 +33,14 @@ const consults = {
 
     like: async (req, res) => {
         try {
+
             const { id } = req.params
             const posts = await like(id)
-            res.status(200);
-        }
-        catch (e) {
-            console.error(e);
-            res.status(500).json({ message: `server internal error` })
+            res.status(200).json(posts)
+
+        } catch (e) {
+            console.log(e)
+            res.status(500)
         }
     },
 
@@ -49,7 +50,7 @@ const consults = {
             const posts = await deletePost(id)
             res.status(200).json(posts)
 
-        } catch(e) {
+        } catch (e) {
             console.log(e)
             res.status(500)
         }
